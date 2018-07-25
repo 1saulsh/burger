@@ -3,6 +3,7 @@ var bodyParser = require("body-parser");
 var methodOverride = require ("method-override");
 var exphbs =require("express-handlebars");
 
+
 var app = express();
 app.use(express.static(__dirname + "/public"));
 
@@ -20,5 +21,7 @@ var routes = require("./controllers/routes.js");
 
 app.use("/", routes);
 
-var port = 3000;
-app.listen(port);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});
